@@ -46,13 +46,13 @@ class Profile(models.Model):
 
     location = models.CharField(max_length=32, verbose_name='目标城市')
 
-    min_distance = models.IntegerField(default=1)
-    max_distance = models.IntegerField(default=10)
+    min_distance = models.IntegerField(default=1, verbose_name='最短距离')
+    max_distance = models.IntegerField(default=10, verbose_name='最长距离')
 
-    min_dating_age = models.IntegerField(default=18)
-    min_dating_age = models.IntegerField(default=45)
+    min_dating_age = models.IntegerField(default=18, verbose_name='最小年龄')
+    min_dating_age = models.IntegerField(default=45, verbose_name='最大年龄')
 
-    dating_sex = models.CharField(max_length=8, choices=SEX)
+    dating_sex = models.CharField(efault='F', choices=SEX, verbose_name='对方性别.')
     
     vibration = models.BooleanField(default=True, verbose_name='是否开启震动')
 
