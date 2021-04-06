@@ -14,9 +14,9 @@ class User(models.Model):
 
     sex = models.CharField(max_length=8, choices=SEX)
 
-    birth_year = models.CharField()
-    birth_month = models.CharField()
-    birth_day = models.CharField()
+    birth_year = models.CharField(max_length=8)
+    birth_month = models.CharField(max_length=8)
+    birth_day = models.CharField(max_length=8)
 
     avatar = models.CharField(max_length=256)
     location = models.CharField(max_length=32)
@@ -26,6 +26,14 @@ class User(models.Model):
         today = datetime.date.today() 
         birth_date = datetime.date(self.birth_year, self.birth_month, self.birth_day)
         return (today - birth_date).days // 365
+
+    @property
+    def profile(self):
+        '''用户的配置; 分布式'''
+        if not hasattr(self, '_profile'):
+            _profile, _ = Profile.objects.get_or_create(id=self.id)
+            self._profile = _profile
+        return self._profile
 
 
 class Profile(models.Model):
