@@ -32,4 +32,11 @@ python -m pip install django
 django-admin startproject [项目名称]
 
 django-admin startapp [模块]
+
+./manage.py shell # 直接进入 Django 环境,避免有模块没有导入.
+
+# 数据库迁移 shell
+python manage.py makemigrations
+
+python manage.py migrate
 ```
