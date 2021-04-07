@@ -14,6 +14,9 @@ git clone ssh@..
 # 安装虚拟环境 venv
 python -m venv .venv
 
+# 吧所有安装的库输入到文件
+pip freeze > requirements.txt
+
 # pip 软件
 pip install -r requirements.txt
 
@@ -40,3 +43,5 @@ python manage.py makemigrations
 
 python manage.py migrate
 ```
+
+# celery 
